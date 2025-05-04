@@ -1,0 +1,123 @@
+
+/* Removed Google Fonts import */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 168 33% 91%;  /* #E2EFEE */
+    --foreground: 224 71% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+
+    --primary: 249 88% 23%;  /* #180572 */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 339 100% 44%;  /* #E2005A */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 8% 46%;
+
+    --accent: 245 21% 67%;  /* #9995C2 */
+    --accent-foreground: 224 71% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 249 88% 23%;  /* #180572 */
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 249 88% 97%;  /* Very light purple */
+    --sidebar-foreground: 249 88% 23%;  /* #180572 */
+    --sidebar-primary: 249 88% 23%;     /* #180572 */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 245 21% 67%;      /* #9995C2 */
+    --sidebar-accent-foreground: 249 88% 23%;  /* #180572 */
+    --sidebar-border: 249 88% 90%;
+    --sidebar-ring: 249 88% 23%;        /* #180572 */
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 249 88% 43%;  /* Lightened #180572 for dark mode */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 339 100% 64%;  /* Lightened #E2005A for dark mode */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 215 27% 17%;
+    --muted-foreground: 217 10% 64%;
+
+    --accent: 245 21% 77%;  /* Lightened #9995C2 for dark mode */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 27% 17%;
+    --input: 215 27% 17%;
+    --ring: 249 88% 63%;
+    
+    --sidebar-background: 249 88% 13%;  /* Darker purple for sidebar */
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 339 100% 54%;    /* Brightened #E2005A */
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 245 21% 77%;      /* Brightened #9995C2 */
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 249 88% 23%;      /* #180572 */
+    --sidebar-ring: 339 100% 54%;       /* Brightened #E2005A */
+  }
+}
+
+/* Additional utility classes for our brand colors */
+@layer components {
+  .bg-brand-background {
+    background-color: hsl(var(--background));
+  }
+  
+  .bg-brand-primary {
+    background-color: hsl(var(--primary));
+  }
+  
+  .text-brand-primary {
+    color: hsl(var(--primary));
+  }
+  
+  .bg-brand-secondary {
+    background-color: hsl(var(--secondary));
+  }
+  
+  .text-brand-secondary {
+    color: hsl(var(--secondary));
+  }
+  
+  .bg-brand-accent {
+    background-color: hsl(var(--accent));
+  }
+  
+  .text-brand-accent {
+    color: hsl(var(--accent));
+  }
+  
+  .form-container {
+    @apply bg-white p-4 rounded-md shadow-sm border border-gray-100;
+  }
+}

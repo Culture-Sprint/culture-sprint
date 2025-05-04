@@ -1,0 +1,9 @@
+
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+// Get environment variables
+const supabaseUrl = Deno.env.get('SUPABASE_URL') as string;
+const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') as string;
+
+// Create a Supabase client with the service role key
+export const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
