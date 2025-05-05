@@ -1,4 +1,3 @@
-
 import { cacheManager } from './cacheManager';
 import { CacheOptions } from './types/cacheTypes';
 import { CACHE_EXPIRATION } from './cacheConfig';
@@ -37,7 +36,7 @@ export const getCachedResponse = <T>(
     
     return cachedData;
   } catch (error) {
-    console.error(`Error retrieving cached response for key ${cacheKey}:`, error);
+    console.error("Error retrieving cached response for key:", cacheKey, error);
     return null;
   }
 };
@@ -53,7 +52,7 @@ export const setCachedResponse = <T>(
   try {
     cacheManager.set(cacheKey, data, options);
   } catch (error) {
-    console.error(`Error caching response for key ${cacheKey}:`, error);
+    console.error("Error caching response for key:", cacheKey, error);
   }
 };
 
@@ -67,7 +66,7 @@ export const clearCachedResponse = (
   try {
     cacheManager.remove(cacheKey, options);
   } catch (error) {
-    console.error(`Error clearing cached response for key ${cacheKey}:`, error);
+    console.error("Error clearing cached response for key:", cacheKey, error);
   }
 };
 
@@ -78,7 +77,7 @@ export const clearAllCachedResponses = (options: CacheOptions = {}): void => {
   try {
     cacheManager.clearPattern('response_*', options);
   } catch (error) {
-    console.error('Error clearing all cached responses:', error);
+    console.error("Error clearing all cached responses:", error);
   }
 };
 
@@ -92,7 +91,7 @@ export const clearProjectCachedResponses = (
   try {
     cacheManager.response.clearProjectResponses(projectId, options);
   } catch (error) {
-    console.error(`Error clearing cached responses for project ${projectId}:`, error);
+    console.error("Error clearing cached responses for project:", projectId, error);
   }
 };
 
@@ -110,7 +109,7 @@ export const clearActivityCache = (
     clearCachedResponse(cacheKey);
     console.log(`Cleared activity cache for key: ${cacheKey}`);
   } catch (error) {
-    console.error(`Error clearing activity cache:`, error);
+    console.error("Error clearing activity cache:", error);
   }
 };
 

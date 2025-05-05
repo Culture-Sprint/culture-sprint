@@ -1,4 +1,3 @@
-
 /**
  * Centralized cache service for consistent data caching across the application
  */
@@ -61,7 +60,7 @@ export const getCachedItem = <T>(
     // For browser storage
     return getFromBrowserStorage<T>(key, defaultValue, storage, ttl);
   } catch (error) {
-    console.warn(`Error retrieving cached item for key ${key}:`, error);
+    console.warn("Error retrieving cached item for key:", key, error);
     return defaultValue;
   }
 };
@@ -86,7 +85,7 @@ export const setCachedItem = <T>(
     // For browser storage
     setInBrowserStorage(key, data, storage, ttl);
   } catch (error) {
-    console.warn(`Error setting cached item for key ${key}:`, error);
+    console.warn("Error setting cached item for key:", key, error);
     // Fall back to memory cache
     setInMemoryCache(key, data, ttl);
   }
@@ -111,7 +110,7 @@ export const removeCachedItem = (
     // For browser storage
     removeFromBrowserStorage(key, storage);
   } catch (error) {
-    console.warn(`Error removing cached item for key ${key}:`, error);
+    console.warn("Error removing cached item for key:", key, error);
   }
 };
 
@@ -134,7 +133,7 @@ export const clearCacheByPattern = (
     // For browser storage
     clearBrowserStorageByPattern(pattern, storage);
   } catch (error) {
-    console.warn(`Error clearing cache by pattern ${pattern}:`, error);
+    console.warn("Error clearing cache by pattern:", pattern, error);
   }
 };
 
@@ -156,7 +155,7 @@ export const isCachedItemValid = (
     // For browser storage
     return isBrowserStorageItemValid(key, storage, ttl);
   } catch (error) {
-    console.warn(`Error checking validity of cached item for key ${key}:`, error);
+    console.warn("Error checking validity of cached item for key:", key, error);
     return false;
   }
 };

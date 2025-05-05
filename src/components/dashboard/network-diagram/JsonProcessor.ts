@@ -1,4 +1,3 @@
-
 export const extractJsonFromAIResponse = (response: string): any => {
   if (!response || typeof response !== 'string') {
     console.error("Invalid response:", response);
@@ -15,7 +14,9 @@ export const extractJsonFromAIResponse = (response: string): any => {
       console.log("Direct parsing failed, trying other methods...");
     }
     
-    const arrayMatch = response.match(/\[\s*\{.*?\}\s*(?:,\s*\{.*?\}\s*)*\]/s);
+    // Limit input length to 10,000 characters to avoid ReDoS
+    const safeResponse = response.length > 10000 ? response.slice(0, 10000) : response;
+    const arrayMatch = safeResponse.match(/\[\s*\{[^]*?\}\s*(?:,\s*\{[^]*?\}\s*)*\]/);
     if (arrayMatch) {
       try {
         const arrayStr = arrayMatch[0];
@@ -103,7 +104,8 @@ export const extractJsonFromAIResponse = (response: string): any => {
       fixedJson = fixedJson + ']'.repeat(openBrackets - closeBrackets);
     }
     
-    const fixedMatch = fixedJson.match(/\[\s*\{.*?\}\s*(?:,\s*\{.*?\}\s*)*\]/s);
+    const fixedSafeJson = fixedJson.length > 10000 ? fixedJson.slice(0, 10000) : fixedJson;
+    const fixedMatch = fixedSafeJson.match(/\[\s*\{[^]*?\}\s*(?:,\s*\{[^]*?\}\s*)*\]/);
     if (fixedMatch) {
       try {
         console.log("Attempting to parse fixed JSON:", fixedMatch[0].substring(0, 50) + "...");
